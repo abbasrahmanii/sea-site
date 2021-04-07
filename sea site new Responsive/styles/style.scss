@@ -1,0 +1,257 @@
+$header1: 2.5rem;
+$header2: 4rem;
+$header3: 2.5rem;
+$header4: 2rem;
+$text: 2.5rem;
+$gradient: linear-gradient(120deg, #22c1c3, #fdbb2d);
+$background: linear-gradient(rgba(0, 0, 0, 0.8), transparent),
+  url("./imgs/sea.jpg");
+$color-text: #03292c;
+
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+/* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  // background: linear-gradient(rgba(7, 141, 134, 0.904), transparent);
+  background: url("../imgs/pexels-julia-volk-5273752.jpg"), transparent;
+  @include flex(center, center, row);
+  // background: #161623;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#f00, #f0f);
+    clip-path: circle(30% at right 70%);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#2196f3, #e91e63);
+    clip-path: circle(20% at 10% 10%);
+  }
+}
+
+h1 {
+  font-size: $header1;
+}
+li,
+button,
+label,
+input,
+a,
+p {
+  font-size: $text;
+}
+h2 {
+  font-size: $header2;
+}
+h3 {
+  font-size: $header3;
+}
+h4,
+h5 {
+  font-size: $header4;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: $color-text;
+}
+
+/* dddddddddd*/
+.glass {
+  width: 90vw;
+  margin: 5vh 10vh;
+  min-height: 90vh;
+  z-index: 1;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  @include flex(center, center, column);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+.main-head {
+  width: 90%;
+  margin: 0 0 0 auto;
+}
+
+nav {
+  @include flex(space-between, center, row);
+  min-height: 10vh;
+  width: 90%;
+  flex-wrap: wrap;
+}
+.hamburger-menu span {
+  display: none;
+  width: 30px;
+  height: 5px;
+  border-radius: 2px;
+  margin-top: 2px;
+  background: #fff;
+  cursor: pointer;
+}
+.logo {
+  @include flex(flex-start, center, row);
+  flex: 1 1 15rem;
+  font-family: "Pacifico", cursive;
+  font-size: 3rem;
+  color: $color-text;
+}
+ul {
+  @include flex(space-around, center, row);
+  flex: 1 1 40rem;
+  a {
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    color: #008cff;
+    font-weight: bold;
+  }
+  .active {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+/* ===== */
+
+.intro {
+  min-height: 70vh;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+  @include flex(space-between, center, row);
+  .intro-text {
+    flex: 2 1 60rem;
+    // justify-content: flex-start;
+    margin-right: 4rem;
+    h2 {
+      font-family: "Lobster", cursive;
+      font-size: 6rem;
+      color: white;
+      margin: 0rem 0rem 2rem 30rem;
+    }
+    p {
+      font-size: 1.7rem;
+      font-weight: bold;
+      margin: 0rem 0rem 2rem 30rem;
+      color: #5a9ed6;
+      // text-shadow: 1px 1px rgba(255, 255, 255, 0.829);
+    }
+    .read {
+      background: none;
+      border: none;
+      border: 1px solid white;
+      color: white;
+      padding: 0.7rem 2rem;
+      cursor: pointer;
+      font-size: 1.7rem;
+      margin-left: 30rem;
+    }
+  }
+  .intro-head {
+    flex: 1 1 30rem;
+    justify-content: flex-end;
+    h1 {
+      color: white;
+      font-size: 13rem;
+      font-weight: bold;
+      text-align: end;
+      margin-right: 10rem;
+    }
+  }
+}
+
+/* footer */
+
+footer {
+  min-height: 10vh;
+  width: 90%;
+  margin: auto;
+  @include flex(center, center, row);
+  h4 {
+    font-family: "Pacifico", cursive;
+    font-size: 2rem;
+    color: $color-text;
+    flex: 1 1 10rem;
+  }
+  ul {
+    flex: 1 1 40rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+  .hamburger-menu span {
+    display: block;
+  }
+  .glass {
+    width: 98%;
+    margin: 2% 2%;
+    min-height: calc(100vh - 4%);
+  }
+  .intro .intro-text {
+    text-align: center;
+    margin: 0;
+    h2 {
+      font-size: 4rem;
+      margin: 2rem auto;
+    }
+    p {
+      margin: 1rem 0;
+    }
+    .read {
+      text-align: center;
+      margin: 1rem 0;
+      padding: 0.7rem;
+    }
+  }
+  .intro .intro-head {
+    justify-content: center;
+    h1 {
+      font-size: 6rem;
+      text-align: center;
+      margin: 1rem auto;
+    }
+  }
+  footer {
+    width: 95%;
+    h4 {
+      flex: 1 1 10rem;
+      color: #fff;
+    }
+    ul {
+      flex: 1 1 15rem;
+    }
+  }
+}
